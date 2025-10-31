@@ -40,6 +40,8 @@ h1 {
     margin-bottom: 25px;
 }
 
+/* --- ORTAK ÖĞELER: PUAN PANELI, İŞLEM ALANI, ADIMLAR --- */
+
 /* Puan Paneli */
 .score-panel {
     display: grid;
@@ -82,7 +84,7 @@ h1 {
 }
 
 .operation-area::before {
-    content: '🎯'; /* Emoji düzeltildi */
+    content: '🎯'; 
     position: absolute;
     font-size: 8em;
     opacity: 0.1;
@@ -109,7 +111,7 @@ h1 {
     z-index: 1;
 }
 
-/* Adımlar */
+/* Adımlar (Strateji Oyunu) */
 .steps-container {
     display: flex;
     flex-direction: column;
@@ -218,10 +220,7 @@ h1 {
     box-shadow: 0 6px 20px rgba(67, 233, 123, 0.6);
 }
 
-.check-btn:active {
-    transform: translateY(0);
-}
-
+/* Genel Geri Bildirim ve Kontrol Düğmeleri */
 .feedback-inline {
     font-size: 1.2em;
     font-weight: bold;
@@ -240,7 +239,6 @@ h1 {
     color: #721c24;
 }
 
-/* Ana Geri Bildirim */
 .main-feedback {
     text-align: center;
     padding: 20px;
@@ -256,7 +254,6 @@ h1 {
     color: #667eea;
 }
 
-/* Kontrol Butonları */
 .controls {
     display: flex;
     justify-content: center;
@@ -340,7 +337,7 @@ h1 {
     margin-bottom: 25px;
 }
 
-/* Yardım İpucu */
+/* Yardım İpucu (Strateji Oyunu) */
 .hint-box {
     background: linear-gradient(135deg, #fff9e6 0%, #ffe6a7 100%);
     padding: 15px;
@@ -367,23 +364,8 @@ h1 {
     }
 }
 
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
-    h1 { font-size: 1.8em; }
-    .operation-display { font-size: 2.5em; }
-    .step-title { font-size: 1.2em; }
-    .math-input { width: 100px; font-size: 1.3em; }
-    .game-container { padding: 20px; }
-    .score-panel { grid-template-columns: 1fr; }
-    /* Modal butonu için mobil stil */
-    #strategy-btn { top: 15px; left: 15px; padding: 8px 12px; }
-}
+/* --- STRATEJİ OYUNU MODAL VE BUTONLARI --- */
 
-/* ------------------------------------------------------------------ */
-/* GELİŞMİŞ OYUNDAN (STRATEJİ.HTML) EKLENEN KODLAR (MODAL VE BUTON) */
-/* ------------------------------------------------------------------ */
-
-/* Strateji Butonu */
 #strategy-btn {
     position: absolute;
     top: 30px;
@@ -404,7 +386,6 @@ h1 {
     background-color: #764ba2;
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -470,4 +451,148 @@ h1 {
 .visual-cue {
     font-weight: bold;
     color: #e74c3c;
+}
+
+/* --- RİTMİK SAYMA OYUNU STİLLERİ (rhythmic.html) --- */
+
+.number-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.number-cell {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.number-cell:hover:not(.selected-rhythm):not(.incorrect) {
+    background: #e0e0e0;
+}
+
+.selected-rhythm {
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+    color: white;
+    border-color: #38f9d7;
+    transform: scale(1.05);
+}
+
+.incorrect {
+    background: #ff5e5e;
+    color: white;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(67, 233, 123, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(67, 233, 123, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(67, 233, 123, 0); }
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.primary {
+    background: #667eea;
+    color: white;
+}
+.secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+.info {
+    background: #ffcb6b;
+    color: #333;
+}
+.primary:hover { background: #5566cc; }
+.secondary:hover { background: #e0e0e0; }
+.info:hover { background: #f0b85a; }
+
+.feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+.feedback.info { background: #e6f7ff; color: #0056b3; }
+.feedback.success { background: #d4edda; color: #155724; }
+.feedback.error { background: #f8d7da; color: #721c24; }
+.feedback.hint { background: #fff3cd; color: #856404; }
+
+.progress-bar-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    height: 15px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    background-color: #43e97b;
+    transition: width 0.5s;
+    border-radius: 5px;
+}
+
+#progress-text {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8em; }
+    .operation-display { font-size: 2.5em; }
+    .step-title { font-size: 1.2em; }
+    .math-input { width: 100px; font-size: 1.3em; }
+    .game-container { padding: 20px; }
+    .score-panel { grid-template-columns: 1fr; }
+    #strategy-btn { top: 15px; left: 15px; padding: 8px 12px; }
+    /* Ritmik Sayma Tahtası Mobil Ayarı */
+    .number-board { grid-template-columns: repeat(5, 1fr); gap: 3px; }
+    .number-cell { padding: 8px 0; font-size: 1em; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .control-group { justify-content: space-around; }
 }

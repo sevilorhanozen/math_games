@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritmik Sayma Maceraları</title>
+    <link rel="stylesheet" href="assets/css/style.css"> 
+</head>
+<body>
+    <div class="game-container">
+        <h1>🎶 Ritmik Sayma Oyunu</h1>
+        <p class="subtitle">Seçtiğin ritme göre tahtadaki sayıları işaretle!</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="rhythm-select">Ritmik Sayma Değeri:</label>
+                <select id="rhythm-select">
+                    <option value="2">2'şer</option>
+                    <option value="3">3'er</option>
+                    <option value="4">4'er</option>
+                    <option value="5">5'er</option>
+                    <option value="6">6'şar</option>
+                    <option value="7">7'şer</option>
+                    <option value="8">8'er</option>
+                    <option value="9">9'ar</option>
+                    <option value="10">10'ar</option>
+                </select>
+                <button id="start-btn" class="control-btn primary">Başlat / Değiştir</button>
+            </div>
+            
+            <div class="control-group">
+                <button id="clear-btn" class="control-btn secondary">🧹 Temizle</button>
+                <button id="hint-btn" class="control-btn info">💡 İpucu Al</button>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div id="progress-text">İlerleme: 0 / 0</div>
+            <div class="progress-bar">
+                <div id="progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <div id="number-board" class="number-board">
+            </div>
+        
+        <div id="feedback" class="feedback info">Oynamak için bir ritmik sayma değeri seçin ve Başlat'a tıklayın.</div>
+
+        <div class="footer-controls">
+            <a href="index.html" class="control-btn back">Ana Menüye Dön</a>
+        </div>
+    </div>
+
+    <script src="assets/js/game.js"></script> 
+</body>
+</html>
