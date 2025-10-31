@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zihinsel Matematik Pratiği</title> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Pratik modda Strateji butonunu gizle */
+        #strategy-btn {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🚀 Zihinsel Matematik Pratiği</h1> 
+        <p class="subtitle">10'lu Bloklar ile Hızlı Toplama ve Çıkarma!</p>
+
+        <div class="score-panel">
+            <div class="score-card">
+                <div class="score-label">⭐ Doğru Sayısı</div>
+                <div class="score-value" id="correct-count">0</div>
+            </div>
+            <div class="score-card">
+                <div class="score-label">🎯 Tamamlanan</div>
+                <div class="score-value" id="completed-count">0</div>
+            </div>
+            <div class="score-card">
+                <div class="score-label">🔥 Seri</div>
+                <div class="score-value" id="streak-count">0</div>
+            </div>
+        </div>
+
+        <div class="operation-area">
+            <div class="operation-label">💡 Görevdeki İşlem:</div>
+            <div class="operation-display" id="operation-display">--</div>
+        </div>
+
+        <div class="main-feedback" id="main-feedback">
+            🚀 Hadi başlayalım! İlk adımı tamamla!
+        </div>
+
+        <div class="steps-container" id="steps-container">
+            <div class="step-card active" id="step-1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">En Yakın 10'a Zıpla!</div>
+                </div>
+                <div class="step-description" id="step-1-desc">
+                    İlk sayıyı en yakın 10'a tamamlamak için kaç eklemelisin/çıkarmalısın?
+                </div>
+                <div class="input-group">
+                    <input type="number" class="math-input" id="input-1" placeholder="?">
+                    <button class="check-btn" onclick="checkStep(1)">✓ Kontrol Et</button>
+                    <span class="feedback-inline" id="feedback-1"></span>
+                </div>
+                <div class="hint-box" id="hint-1"></div>
+            </div>
+
+            <div class="step-card disabled" id="step-2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Kalan Sayıyı Bul!</div>
+                </div>
+                <div class="step-description" id="step-2-desc">
+                    İlk adımdan sonra, kaç daha eklemelisin/çıkaracağın sayıdan geriye ne kadar kaldı?
+                </div>
+                <div class="input-group">
+                    <input type="number" class="math-input" id="input-2" placeholder="?">
+                    <button class="check-btn" onclick="checkStep(2)">✓ Kontrol Et</button>
+                    <span class="feedback-inline" id="feedback-2"></span>
+                </div>
+                <div class="hint-box" id="hint-2"></div>
+            </div>
+
+            <div class="step-card disabled" id="step-3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Son Adım - Sonucu Bul!</div>
+                </div>
+                <div class="step-description" id="step-3-desc">
+                    Yeni onluktan kalanı ekleyerek/çıkararak sonucu bul!
+                </div>
+                <div class="input-group">
+                    <input type="number" class="math-input" id="input-3" placeholder="?">
+                    <button class="check-btn" onclick="checkStep(3)">✓ Kontrol Et</button>
+                    <span class="feedback-inline" id="feedback-3"></span>
+                </div>
+                <div class="hint-box" id="hint-3"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn hint" onclick="showHint()">💡 İpucu Göster</button>
+            <button class="control-btn next" id="next-btn" onclick="loadNewOperation()" style="display: none;">
+                🎉 Yeni İşlem
+            </button>
+        </div>
+    </div>
+    
+    <script src="assets/js/game.js"></script>
+</body>
+</html>
